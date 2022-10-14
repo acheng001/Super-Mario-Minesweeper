@@ -3,6 +3,8 @@ package ca.cmpt276.cmpt276assignmentthree;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,20 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
+        optionsButton();
+
+    }
+
+    private void optionsButton() {
+        Button button = findViewById(R.id.optionButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent optionIntent = Options.makeOptionsIntent(Menu.this);
+
+                startActivity(optionIntent);
+            }
+        });
     }
 
     public static Intent makeIntentHomeScreen(Context context){
