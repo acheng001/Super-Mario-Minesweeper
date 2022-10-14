@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"WORKS",Toast.LENGTH_SHORT).show();
                 // Launch the menu screen by using intent
                 int index = 0;
-                //Intent intent = Menu.makeIntentHomeScreen(MainActivity.this);
-                Intent intent =  new Intent(MainActivity.this, Menu.class);
+                Intent intent = Menu.makeIntentHomeScreen(MainActivity.this);
+                //Intent intent =  new Intent(MainActivity.this, Menu.class);
                 startActivity(intent);
             }
         });
