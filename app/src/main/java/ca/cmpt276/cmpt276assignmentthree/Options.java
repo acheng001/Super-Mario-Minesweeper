@@ -4,17 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Options extends AppCompatActivity {
 
-    public static Options instance;
-    private static int rows;
-    private static int columns;
-
+    public Opt options = Opt.getInstance();
 
     @Override
     protected void onCreate (Bundle savedInstanceState){
@@ -23,6 +22,25 @@ public class Options extends AppCompatActivity {
 
         createSizeRadioButtons();
         createMinesRadioButtons();
+
+        onSaveButton();
+    }
+
+    private void onSaveButton() {
+        Button button = (Button) findViewById(R.id.save);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Options.this, Menu.class);
+
+                Toast.makeText(Options.this, "Saving Options...", Toast.LENGTH_SHORT).show();
+
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void createMinesRadioButtons() {
@@ -39,7 +57,7 @@ public class Options extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    options.setMine(num_mine);
                 }
             });
 
@@ -59,6 +77,14 @@ public class Options extends AppCompatActivity {
             RadioButton button = new RadioButton(this);
             button.setText(row + " rows by " + column + " columns");
 
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    options.setColumns(column);
+                    options.setRows(row);
+                }
+            });
+
             group.addView(button);
 
         }
@@ -68,6 +94,9 @@ public class Options extends AppCompatActivity {
     public static Intent makeOptionsIntent(Context context){
 
         Intent intent = new Intent(context, Options.class);
+//        intent.putExtra("row", row);
+//        intent.putExtra("column", column);
         return intent;
     }
+
 }

@@ -5,17 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 // Remember to extend AppCompatACtivity when creating a new Java file
 public class Menu extends AppCompatActivity {
 
+    private Opt option;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        option = Opt.getInstance();
         setContentView(R.layout.menu);
-
+        Toast.makeText(Menu.this, "rows: " + option.getRows() + " columns: " + option.getColumns() + " mines: " + option.getMine(), Toast.LENGTH_SHORT).show();
         optionsButton();
 
     }
