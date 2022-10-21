@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import ca.cmpt276.cmpt276assignmentthree.model.gameLogic;
 
 public class game extends AppCompatActivity {
+    gameLogic myGame = new gameLogic();
 
     // Number of rows and columns
     private int numRows = 4;
@@ -54,13 +55,19 @@ public class game extends AppCompatActivity {
     private void popButtons(){
         // Have the random part
         //Random controlStar = new Random();
-        gameLogic myGame = new gameLogic();
         // Call the random star generator with game
         myGame.setRandomStar(mines,numRows,numColumns); // Has two array of random numbers
+
 
         // Set our arrays to the two arrays from gameLogic
         rArray = myGame.getRowArray();
         cArray = myGame.getColArray();
+
+        // Loop through the array
+        for(int i = 0; i < rArray.size();i++){
+            Toast.makeText(game.this,"ROWS: " + rArray.get(i),Toast.LENGTH_SHORT).show();
+        }
+
         /*
         // Add them to teh arrays
         for (int i = 0; i < mines; i++) {
@@ -123,12 +130,18 @@ public class game extends AppCompatActivity {
                         boolean test = myGame.checkStar(finalROW,finalCOLUMN);
                         if(test == true){
                             clickHelper(finalCOLUMN, finalROW);
+                            DecreaseScans();
+                            // Scan the rows and column of the mine to change the text
+                            //int s = myGame.helpScanner(finalROW, finalCOLUMN);
+                            //s--;
+                           // newButton.setText("" + s);
                         }
                         // Else if it is not true call the scanner function
                         else{
                             int s = myGame.helpScanner(finalROW, finalCOLUMN);
                             Toast.makeText(game.this,"Score: " + s,Toast.LENGTH_SHORT).show();
                             newButton.setText("" + s);
+                            // If the star is found, dis
                         }
                         /*
                         for (int i = 0; i < mines; i++) {
@@ -166,6 +179,19 @@ public class game extends AppCompatActivity {
         }
     }
 
+    private void DecreaseScans() {
+        for(int i = 0; i < numRows;i++){
+            for(int j = 0; j < numColumns; j++){
+                Button button = buttons[i][j];
+                int count = myGame.rescan(i,j);
+                if (count != -1){
+                    button.setText("" + count);
+                }
+            }
+
+        }
+    }
+
     private void clickHelper(int c, int r){
         // Calls this function where button is clicked but crashes
        // Toast.makeText(game.this,"BUTTON CLICKED",Toast.LENGTH_SHORT).show();
@@ -190,7 +216,7 @@ public class game extends AppCompatActivity {
 
     }
 
-    // Helps display the text on the box (UI)
+    // Helps change the text on the
     private void UIScanner(){
         //button.setT
     }
