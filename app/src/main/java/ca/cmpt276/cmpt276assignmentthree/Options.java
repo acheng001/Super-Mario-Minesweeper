@@ -2,6 +2,7 @@ package ca.cmpt276.cmpt276assignmentthree;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,9 @@ public class Options extends AppCompatActivity {
 
         createSizeRadioButtons();
         createMinesRadioButtons();
+
+        int savedrow = getrow(this);
+        int savedmine = getmines(this);
 
         onSaveButton();
     }
@@ -57,11 +61,20 @@ public class Options extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     options.setMine(num_mine);
+
+                    saveNumMines(num_mine);
                 }
+
+
             });
 
             group.addView(button);
+
+            if(getmines(this) == num_mine){
+                button.setChecked(true);
+            }
         }
     }
 
@@ -82,10 +95,17 @@ public class Options extends AppCompatActivity {
                 public void onClick(View v) {
                     options.setColumns(column);
                     options.setRows(row);
+
+                    saveColumnNum(column);
+                    saveRowNum(row);
                 }
             });
 
             group.addView(button);
+
+            if(getrow(this) == row){
+                button.setChecked(true);
+            }
 
         }
 
@@ -99,4 +119,39 @@ public class Options extends AppCompatActivity {
         return intent;
     }
 
+    private void saveNumMines(int num_mines){
+        SharedPreferences pref = this.getSharedPreferences("minepref", MODE_PRIVATE);
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putInt("nummines", num_mines);
+        edit.apply();
+    }
+
+    private void saveRowNum(int row){
+        SharedPreferences pref = this.getSharedPreferences("rowpref", MODE_PRIVATE);
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putInt("numrows", row);
+        edit.apply();
+    }
+
+    private void saveColumnNum(int column){
+        SharedPreferences pref = this.getSharedPreferences("columnpref", MODE_PRIVATE);
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putInt("numcolumns", column);
+        edit.apply();
+    }
+
+    static public int getmines(Context context){
+        SharedPreferences pref = context.getSharedPreferences("minepref", MODE_PRIVATE);
+        return pref.getInt("nummines", 6);
+    }
+
+    static public int getcolumn(Context context){
+        SharedPreferences pref = context.getSharedPreferences("columnpref", MODE_PRIVATE);
+        return pref.getInt("numcolumns", 6);
+    }
+
+    static public int getrow(Context context){
+        SharedPreferences pref = context.getSharedPreferences("rowpref", MODE_PRIVATE);
+        return pref.getInt("numrows", 4);
+    }
 }
