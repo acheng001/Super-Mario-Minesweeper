@@ -3,6 +3,9 @@ package ca.cmpt276.cmpt276assignmentthree;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +16,8 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
+
+        callGameButton();
 
     }
 
@@ -29,5 +34,23 @@ public class Menu extends AppCompatActivity {
        */
     }
 
+    private void callGameButton(){
+        // When the gameButton is clicked
+        Button gameButt= findViewById(R.id.playButton);
+        gameButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Toast.makeText(Menu.this,"Switching to play game",Toast.LENGTH_SHORT).show();
+                // Launch the game screen by using intent
+                Intent intent = game.makeIntentGameScreen(Menu.this);
+                //Intent intent =  new Intent(MainActivity.this, Menu.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 }
+
+
+
