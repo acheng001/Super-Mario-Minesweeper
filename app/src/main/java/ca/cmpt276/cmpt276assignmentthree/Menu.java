@@ -2,6 +2,7 @@ package ca.cmpt276.cmpt276assignmentthree;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +19,11 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         option = Opt.getInstance();
+        option.setColumns(getcolumn(this));
+        option.setRows(getrow(this));
+        option.setMine(getmines(this));
         setContentView(R.layout.menu);
-//        Toast.makeText(Menu.this, "rows: " + option.getRows() + " columns: " + option.getColumns() + " mines: " + option.getMine(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(Menu.this, "rows: " + option.getRows() + " columns: " + option.getColumns() + " mines: " + option.getMine(), Toast.LENGTH_SHORT).show();
         optionsButton();
 
     }
@@ -48,6 +52,19 @@ public class Menu extends AppCompatActivity {
 
        */
     }
+    static public int getmines(Context context){
+        SharedPreferences pref = context.getSharedPreferences("minepref", MODE_PRIVATE);
+        return pref.getInt("nummines", 6);
+    }
 
+    static public int getcolumn(Context context){
+        SharedPreferences pref = context.getSharedPreferences("columnpref", MODE_PRIVATE);
+        return pref.getInt("numcolumns", 6);
+    }
+
+    static public int getrow(Context context){
+        SharedPreferences pref = context.getSharedPreferences("rowpref", MODE_PRIVATE);
+        return pref.getInt("numrows", 4);
+    }
 
 }

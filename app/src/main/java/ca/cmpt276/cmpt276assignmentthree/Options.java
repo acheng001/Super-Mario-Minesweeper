@@ -24,8 +24,6 @@ public class Options extends AppCompatActivity {
         createSizeRadioButtons();
         createMinesRadioButtons();
 
-        int savedrow = getrow(this);
-        int savedmine = getmines(this);
 
         onSaveButton();
     }

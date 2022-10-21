@@ -2,21 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="735dp"
-        android:layout_height="421dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4"
-        app:srcCompat="@drawable/mario_background" />
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mario_background"
+    >
     <RadioGroup
         android:id="@+id/board_size_radio"
         android:layout_width="wrap_content"
@@ -32,14 +21,13 @@
         android:id="@+id/num_of_mines_radio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="380dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/board_size_radio"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mine"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <TextView
         android:id="@+id/board"
@@ -56,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:layout_marginEnd="220dp"
+        android:layout_marginEnd="200dp"
         android:text="Number of Mines Options:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -65,8 +53,8 @@
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
