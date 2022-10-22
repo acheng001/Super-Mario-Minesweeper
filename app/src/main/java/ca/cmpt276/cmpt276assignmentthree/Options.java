@@ -114,8 +114,7 @@ public class Options extends AppCompatActivity {
     public static Intent makeOptionsIntent(Context context){
 
         Intent intent = new Intent(context, Options.class);
-//        intent.putExtra("row", row);
-//        intent.putExtra("column", column);
+
         return intent;
     }
 

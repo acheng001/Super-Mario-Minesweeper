@@ -23,8 +23,8 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".helpUI"
-            android:label="Help Menu"
+            android:name=".HelpActivity"
+            android:label="Help"
             android:exported="false"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|orientation|keyboardHidden|screenSize">
