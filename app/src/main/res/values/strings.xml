@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CMPT276AssignmentThree</string>
+
+    <string name="hyperlink1"><a href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home">https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home</a></string>
+    <string name="hyperlink2"><a href="https://fantendo.fandom.com/wiki/Grand_Star">https://fantendo.fandom.com/wiki/Grand_Star</a></string>
+    <string name="hyperlink3"><a href="https://wallpapercave.com/super-mario-retro-wallpapers">https://wallpapercave.com/super-mario-retro-wallpapers</a></string>
+    <string name="hyperlink4"><a href="https://www.gq-magazine.co.uk/culture/article/chris-pratt-super-mario-bros-movie">https://www.gq-magazine.co.uk/culture/article/chris-pratt-super-mario-bros-movie</a></string>
 </resources>

@@ -25,12 +25,11 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.menu);
         Toast.makeText(Menu.this, "rows: " + option.getRows() + " columns: " + option.getColumns() + " mines: " + option.getMine(), Toast.LENGTH_SHORT).show();
         optionsButton();
+        helpButton();
 
         callGameButton();
 
     }
-
-
 
     private void optionsButton() {
         Button button = findViewById(R.id.optionButton);
@@ -42,24 +41,32 @@ public class Menu extends AppCompatActivity {
                 startActivity(optionIntent);
             }
         });
+    }
+
+
+    private void helpButton(){
+        Button button = findViewById(R.id.helpbutton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent helpIntent = HelpActivity.makeHelpIntent(Menu.this);
+
+                startActivity(helpIntent);
+            }
+        });
+    }
+
+    public static Intent makeIntentHomeScreen(Context context){
+        // Returning our new intent
+        Intent i = new Intent(context, Menu.class);
+        return i;
+
 
     }
-        public static Intent makeIntentHomeScreen (Context context){
-            // Returning our new intent
-            Intent i = new Intent(context, Menu.class);
-            return i;
-            //return new Intent(context, Menu.class);
-        /*
-        Intent intent = new Intent(context, GameScore.class);
-        intent.putExtra("positioning", index);
-        intent.putExtra("editting", edit);
-
-       */
-        }
-        static public int getmines (Context context){
-            SharedPreferences pref = context.getSharedPreferences("minepref", MODE_PRIVATE);
-            return pref.getInt("nummines", 6);
-        }
+    static public int getmines(Context context){
+        SharedPreferences pref = context.getSharedPreferences("minepref", MODE_PRIVATE);
+        return pref.getInt("nummines", 6);
+    }
 
         private void callGameButton () {
             // When the gameButton is clicked
@@ -82,13 +89,9 @@ public class Menu extends AppCompatActivity {
             return pref.getInt("numcolumns", 6);
         }
 
-        static public int getrow (Context context){
-            SharedPreferences pref = context.getSharedPreferences("rowpref", MODE_PRIVATE);
-            return pref.getInt("numrows", 4);
-        }
+    static public int getrow(Context context){
+        SharedPreferences pref = context.getSharedPreferences("rowpref", MODE_PRIVATE);
+        return pref.getInt("numrows", 4);
+    }
 
 }
-
-
-
-
