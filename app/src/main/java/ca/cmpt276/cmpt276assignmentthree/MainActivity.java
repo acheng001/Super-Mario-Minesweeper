@@ -12,10 +12,13 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private String TAG = "Hello World!";
+  //  Options option;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        option = Options.getInstance();
         setContentView(R.layout.activity_main);
 
         //Log.e(TAG, "sefsefse");
