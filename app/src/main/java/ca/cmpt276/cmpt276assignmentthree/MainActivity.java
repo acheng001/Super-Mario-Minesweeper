@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        //https://www.geeksforgeeks.org/animation-in-android-with-example/
+        ImageView image = findViewById(R.id.star);
+        Animation anime = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anime);
+        image.startAnimation(anime);
 
         // Call the function
         callMenuButton();
