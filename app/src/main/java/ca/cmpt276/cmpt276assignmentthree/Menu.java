@@ -25,7 +25,6 @@ public class Menu extends AppCompatActivity {
         option.setRows(getrow(this));
         option.setMine(getmines(this));
         setContentView(R.layout.menu);
-        Toast.makeText(Menu.this, "rows: " + option.getRows() + " columns: " + option.getColumns() + " mines: " + option.getMine(), Toast.LENGTH_SHORT).show();
         helpButton();
         optionsButton();
 
@@ -34,11 +33,11 @@ public class Menu extends AppCompatActivity {
     }
 
     private void helpButton() {
-        Button button = findViewById(R.id.helpButton);
+        Button button = findViewById(R.id.helpbutton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent helpIntent = helpUI.makeHelpIntent(Menu.this);
+                Intent helpIntent = HelpActivity.makeHelpIntent(Menu.this);
 
                 startActivity(helpIntent);
             }
@@ -57,19 +56,6 @@ public class Menu extends AppCompatActivity {
             }
         });
     }
-
-
-    private void helpButton(){
-        Button button = findViewById(R.id.helpbutton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent helpIntent = HelpActivity.makeHelpIntent(Menu.this);
-
-                startActivity(helpIntent);
-            }
-        });
-
 
     public static Intent makeIntentHomeScreen(Context context){
         // Returning our new intent
