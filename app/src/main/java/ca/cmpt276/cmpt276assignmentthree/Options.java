@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import ca.cmpt276.cmpt276assignmentthree.model.Opt;
+
 public class Options extends AppCompatActivity {
 
     public Opt options = Opt.getInstance();

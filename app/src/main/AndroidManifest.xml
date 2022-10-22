@@ -23,6 +23,16 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".helpUI"
+            android:label="Help Menu"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|orientation|keyboardHidden|screenSize">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Menu"
             android:exported="false"
             android:screenOrientation="landscape"

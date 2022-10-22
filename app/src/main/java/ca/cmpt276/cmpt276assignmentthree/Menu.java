@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import ca.cmpt276.cmpt276assignmentthree.model.Opt;
+
 // Remember to extend AppCompatACtivity when creating a new Java file
 public class Menu extends AppCompatActivity {
 
@@ -18,19 +20,34 @@ public class Menu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //helpButton();
         option = Opt.getInstance();
         option.setColumns(getcolumn(this));
         option.setRows(getrow(this));
         option.setMine(getmines(this));
         setContentView(R.layout.menu);
         Toast.makeText(Menu.this, "rows: " + option.getRows() + " columns: " + option.getColumns() + " mines: " + option.getMine(), Toast.LENGTH_SHORT).show();
+        helpButton();
         optionsButton();
+
+
 
         callGameButton();
 
     }
 
+    private void helpButton() {
+        Button button = findViewById(R.id.helpButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent helpIntent = helpUI.makeHelpIntent(Menu.this);
 
+                startActivity(helpIntent);
+            }
+        });
+
+    }
 
     private void optionsButton() {
         Button button = findViewById(R.id.optionButton);
@@ -44,6 +61,7 @@ public class Menu extends AppCompatActivity {
         });
 
     }
+
         public static Intent makeIntentHomeScreen (Context context){
             // Returning our new intent
             Intent i = new Intent(context, Menu.class);

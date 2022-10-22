@@ -6,33 +6,45 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
+import ca.cmpt276.cmpt276assignmentthree.model.Opt;
+import ca.cmpt276.cmpt276assignmentthree.model.alert;
 import ca.cmpt276.cmpt276assignmentthree.model.gameLogic;
 
 public class game extends AppCompatActivity {
     gameLogic myGame = new gameLogic();
+    Opt options = Opt.getInstance();
 
     // Number of rows and columns
-    private int numRows = 4;
-    private int numColumns = 6;
+    private int numRows = options.getRows();
+    private int numColumns = options.getColumns();
 
     // Number of mines (Must crate 6 mines)
-    private int mines = 6;
+    private int mines = options.getMine();
 
     // Number of scans
     private int scans = 0;
+
+    // Number of stars found
+    private int starsFound = 0;
+
+
 
     // Have two integer arrays
     List<Integer> rArray = new ArrayList<>();
@@ -43,10 +55,18 @@ public class game extends AppCompatActivity {
 
 
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
+
+        // Access the two texts
+        //TextView mineText = (TextView) findViewById(R.id.minesID);
+        //TextView scanText = (TextView) findViewById(R.id.scansID);
 
 
         popButtons();
@@ -62,11 +82,6 @@ public class game extends AppCompatActivity {
         // Set our arrays to the two arrays from gameLogic
         rArray = myGame.getRowArray();
         cArray = myGame.getColArray();
-
-        // Loop through the array
-        for(int i = 0; i < rArray.size();i++){
-            Toast.makeText(game.this,"ROWS: " + rArray.get(i),Toast.LENGTH_SHORT).show();
-        }
 
         /*
         // Add them to teh arrays
@@ -119,6 +134,7 @@ public class game extends AppCompatActivity {
                 // Do button.setText("string")
                 newButton.setPadding(0,0,0,0);
                 newButton.setOnClickListener(new View.OnClickListener() {
+                    int buttonClicked = 0;
                     @Override
                     public void onClick(View v) {
                         //Toast.makeText(game.this,"BUTTON CLICKED",Toast.LENGTH_SHORT).show();
@@ -128,20 +144,34 @@ public class game extends AppCompatActivity {
                        //Toast.makeText(game.this, "ROW: " + finalROW, Toast.LENGTH_SHORT).show();
                        // Two random generating ints for sure
                         boolean test = myGame.checkStar(finalROW,finalCOLUMN);
-                        if(test == true){
+                        if(test == true && buttonClicked == 0){
                             clickHelper(finalCOLUMN, finalROW);
                             DecreaseScans();
                             // Scan the rows and column of the mine to change the text
                             //int s = myGame.helpScanner(finalROW, finalCOLUMN);
                             //s--;
                            // newButton.setText("" + s);
+                            starsFound++;
+                            TextView mineText = (TextView) findViewById(R.id.minesID);
+                            mineText.setText("Found " + starsFound + " of " + mines + " mines");
+                            buttonClicked++;
+
+                            if(starsFound == mines){
+
+                                FragmentManager manager = getSupportFragmentManager();
+                                alert myAlert = new alert();
+                                myAlert.show(manager, "alert");
+                            }
                         }
                         // Else if it is not true call the scanner function
                         else{
                             int s = myGame.helpScanner(finalROW, finalCOLUMN);
-                            Toast.makeText(game.this,"Score: " + s,Toast.LENGTH_SHORT).show();
                             newButton.setText("" + s);
+                            scans++;
+                            TextView scanText = (TextView) findViewById(R.id.scansID);
+                            scanText.setText("# Scans used: " + scans );
                             // If the star is found, dis
+                            newButton.setEnabled(false);
                         }
                         /*
                         for (int i = 0; i < mines; i++) {
@@ -217,8 +247,8 @@ public class game extends AppCompatActivity {
     }
 
     // Helps change the text on the
-    private void UIScanner(){
-        //button.setT
+    private void displayAlert(){
+
     }
 
     private void buttonSizes() {

@@ -1,4 +1,4 @@
-package ca.cmpt276.cmpt276assignmentthree;
+package ca.cmpt276.cmpt276assignmentthree.model;
 
 public class Opt {
 
