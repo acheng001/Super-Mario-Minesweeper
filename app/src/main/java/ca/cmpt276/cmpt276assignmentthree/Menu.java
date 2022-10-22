@@ -41,6 +41,8 @@ public class Menu extends AppCompatActivity {
                 startActivity(optionIntent);
             }
         });
+    }
+
 
     private void helpButton(){
         Button button = findViewById(R.id.helpbutton);
