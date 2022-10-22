@@ -43,50 +43,52 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-
-    public static Intent makeIntentHomeScreen(Context context){
-        // Returning our new intent
-        Intent i = new Intent(context, Menu.class);
-        return i;
-        //return new Intent(context, Menu.class);
+    }
+        public static Intent makeIntentHomeScreen (Context context){
+            // Returning our new intent
+            Intent i = new Intent(context, Menu.class);
+            return i;
+            //return new Intent(context, Menu.class);
         /*
         Intent intent = new Intent(context, GameScore.class);
         intent.putExtra("positioning", index);
         intent.putExtra("editting", edit);
 
        */
-    }
-    static public int getmines(Context context){
-        SharedPreferences pref = context.getSharedPreferences("minepref", MODE_PRIVATE);
-        return pref.getInt("nummines", 6);
-    }
+        }
+        static public int getmines (Context context){
+            SharedPreferences pref = context.getSharedPreferences("minepref", MODE_PRIVATE);
+            return pref.getInt("nummines", 6);
+        }
 
-    private void callGameButton(){
-        // When the gameButton is clicked
-        Button gameButt= findViewById(R.id.playButton);
-        gameButt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        private void callGameButton () {
+            // When the gameButton is clicked
+            Button gameButt = findViewById(R.id.playButton);
+            gameButt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Toast.makeText(Menu.this,"Switching to play game",Toast.LENGTH_SHORT).show();
-                // Launch the game screen by using intent
-                Intent intent = game.makeIntentGameScreen(Menu.this);
-                //Intent intent =  new Intent(MainActivity.this, Menu.class);
-                startActivity(intent);
-            }
-        });
-    static public int getcolumn(Context context){
-        SharedPreferences pref = context.getSharedPreferences("columnpref", MODE_PRIVATE);
-        return pref.getInt("numcolumns", 6);
-    }
+                    Toast.makeText(Menu.this, "Switching to play game", Toast.LENGTH_SHORT).show();
+                    // Launch the game screen by using intent
+                    Intent intent = game.makeIntentGameScreen(Menu.this);
+                    //Intent intent =  new Intent(MainActivity.this, Menu.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
-    static public int getrow(Context context){
-        SharedPreferences pref = context.getSharedPreferences("rowpref", MODE_PRIVATE);
-        return pref.getInt("numrows", 4);
-    }
+        static public int getcolumn (Context context){
+            SharedPreferences pref = context.getSharedPreferences("columnpref", MODE_PRIVATE);
+            return pref.getInt("numcolumns", 6);
+        }
 
-    }
+        static public int getrow (Context context){
+            SharedPreferences pref = context.getSharedPreferences("rowpref", MODE_PRIVATE);
+            return pref.getInt("numrows", 4);
+        }
+
 }
+
 
 
 
