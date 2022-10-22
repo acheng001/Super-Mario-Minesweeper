@@ -23,7 +23,6 @@ public class Menu extends AppCompatActivity {
         option.setRows(getrow(this));
         option.setMine(getmines(this));
         setContentView(R.layout.menu);
-        Toast.makeText(Menu.this, "rows: " + option.getRows() + " columns: " + option.getColumns() + " mines: " + option.getMine(), Toast.LENGTH_SHORT).show();
         optionsButton();
         helpButton();
 
