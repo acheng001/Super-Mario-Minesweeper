@@ -18,10 +18,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        option = Options.getInstance();
         setContentView(R.layout.activity_main);
 
-        //Log.e(TAG, "sefsefse");
         // Call the function
         callMenuButton();
 
@@ -35,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this,"WORKS",Toast.LENGTH_SHORT).show();
                 // Launch the menu screen by using intent
                 int index = 0;
                 Intent intent = Menu.makeIntentHomeScreen(MainActivity.this);

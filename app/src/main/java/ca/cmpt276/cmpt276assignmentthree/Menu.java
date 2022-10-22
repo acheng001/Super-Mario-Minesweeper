@@ -21,6 +21,7 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         option = Opt.getInstance();
+        //sets Opt variables to shared preference numbers
         option.setColumns(getcolumn(this));
         option.setRows(getrow(this));
         option.setMine(getmines(this));
@@ -76,15 +77,14 @@ public class Menu extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    Toast.makeText(Menu.this, "Switching to play game", Toast.LENGTH_SHORT).show();
+
                     // Launch the game screen by using intent
                     Intent intent = game.makeIntentGameScreen(Menu.this);
-                    //Intent intent =  new Intent(MainActivity.this, Menu.class);
+
                     startActivity(intent);
                 }
             });
         }
-
         static public int getcolumn (Context context){
             SharedPreferences pref = context.getSharedPreferences("columnpref", MODE_PRIVATE);
             return pref.getInt("numcolumns", 6);

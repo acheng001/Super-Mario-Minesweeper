@@ -28,15 +28,14 @@ public class alert extends AppCompatDialogFragment {
         DialogInterface.OnClickListener myListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface d, int w) {
-               // TextView text = (TextView) getActivity().findViewById(R.id.myText);
+
                 switch(w){
                     case DialogInterface.BUTTON_POSITIVE:
                         getActivity().finish();
-                        //TextView text = (TextView) getActivity().findViewById(R.id.myText);
-                        //break;
+
 
                     case DialogInterface.BUTTON_NEGATIVE:
-                        //break;
+
                 }
             }
         };

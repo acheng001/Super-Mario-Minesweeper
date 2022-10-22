@@ -51,7 +51,7 @@ public class Options extends AppCompatActivity {
         RadioGroup group = (RadioGroup) findViewById(R.id.num_of_mines_radio);
 
         int[] mines = getResources().getIntArray(R.array.num_of_mines);
-
+        //initialize radio buttons
         for (int i = 0; i < mines.length; i++){
             int num_mine = mines[i];
 
@@ -61,7 +61,7 @@ public class Options extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    //set number of mines
                     options.setMine(num_mine);
 
                     saveNumMines(num_mine);
@@ -71,7 +71,7 @@ public class Options extends AppCompatActivity {
             });
 
             group.addView(button);
-
+            //sets radio button
             if(getmines(this) == num_mine){
                 button.setChecked(true);
             }
@@ -82,7 +82,7 @@ public class Options extends AppCompatActivity {
         RadioGroup group = (RadioGroup) findViewById(R.id.board_size_radio);
 
         int[] sizes = getResources().getIntArray(R.array.board_size);
-
+        //make radio buttons
         for (int i = 0; i < sizes.length; i+=2){
             int column = sizes[i+1];
             int row = sizes[i];
@@ -93,6 +93,7 @@ public class Options extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //set rows and colums
                     options.setColumns(column);
                     options.setRows(row);
 
@@ -102,7 +103,7 @@ public class Options extends AppCompatActivity {
             });
 
             group.addView(button);
-
+            //set radio button
             if(getrow(this) == row){
                 button.setChecked(true);
             }
@@ -117,7 +118,7 @@ public class Options extends AppCompatActivity {
 
         return intent;
     }
-
+    //following functions save and recieve shared preference
     private void saveNumMines(int num_mines){
         SharedPreferences pref = this.getSharedPreferences("minepref", MODE_PRIVATE);
         SharedPreferences.Editor edit = pref.edit();

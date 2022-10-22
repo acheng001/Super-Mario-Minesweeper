@@ -6,13 +6,14 @@ public class Opt {
     private static int rows;
     private static int columns;
     private static int mine;
-
+    //initialize
     private Opt(){
         rows = 4;
         columns = 6;
         mine = 6;
     }
 
+    //singleton
     public static Opt getInstance(){
         if(instance == null){
             instance = new Opt();
@@ -20,7 +21,7 @@ public class Opt {
         return instance;
     }
 
-
+    //getters and setters
     public static int getColumns() {
         return columns;
     }
